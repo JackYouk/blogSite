@@ -4,8 +4,8 @@ const {User} = require('../models');
 const {Todo} = require('../models');
 
 // renders signup/landing page
-router.get('/', (req,res) => {
-    res.render('landingPage', {
+router.get('/signup', (req,res) => {
+    res.render('signup', {
         isLoggedIn: req.session.isLoggedIn,
     });
 });
