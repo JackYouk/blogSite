@@ -2,9 +2,6 @@ const router = require('express').Router();
 const {Todo, User} = require('../models');
 const bcrypt = require('bcryptjs');
 
-// /api prepended
-
-
 router.post('/todos', async (req, res) => {
     if(!req.session.isLoggedIn){
         res.status(401).json({error: 'You must be logged in to do that'});
