@@ -2,16 +2,23 @@ const router = require('express').Router();
 const apiController = require('./apiController');
 const {User} = require('../models');
 const {Todo} = require('../models');
+const {Post} = require('../models');
 
-router.get('/', (req, res) => {
-    const posts = [{
-        title: 'testPost1',
-        username: 'jack',
-        content: 'cnwkubnweoubweoubewoubeouwbeoubeowubu',
-    }, {title: 'testPost2',username: 'zaza',content: '635738667823688962839696823692386778hey',}];
-    res.render('homepage', {
-        posts
-    });
+router.get('/', async (req, res) => {
+    try {
+        const postsData = await Post.findAll();
+        const posts = postsData.map(post => post.get({plain: true}));
+        console.log(posts);
+        const userData = await User.findByPk(posts.userId);
+        const username = userData.get({plain: true});
+        res.render('homepage', {
+            posts,
+            username
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({error});
+    }
 });
 
 

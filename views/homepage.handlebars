@@ -1,11 +1,10 @@
-
 <div class="row">
     <div class="col d-flex">
             {{#each posts as |post|}}
                 <div class="card m-2" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">{{post.title}}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{post.username}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">{{username}}</h6>
                         <p class="card-text">{{post.content}}</p>
                     </div>
                 </div>
@@ -15,12 +14,12 @@
             <div class="card-body">
                 <h5 class="card-title">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="insert title here"/>
+                        <input id="titleInput" type="text" class="form-control" placeholder="insert title here"/>
                     </div>
                 </h5>
                 <p class="card-text">
                     <div class="input-group mb-3">
-                        <textarea class="form-control" placeholder="insert content here"></textarea>
+                        <textarea id="contentInput" class="form-control" placeholder="insert content here"></textarea>
                     </div>
                 </p>
                 <button class="btn btn-outline-success" type="button" id="createPostBtn">+</button>
@@ -28,3 +27,5 @@
         </div>
     </div>
 </div>
+
+<script src="assets/js/post.js"></script>

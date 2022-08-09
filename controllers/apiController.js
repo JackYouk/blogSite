@@ -1,6 +1,26 @@
 const router = require('express').Router();
-const {Todo, User} = require('../models');
+const {Todo, User, Post} = require('../models');
 const bcrypt = require('bcryptjs');
+
+
+// -------------------------------POSTS--------------------------------------------------------
+router.post('/posts', async (req, res) => {
+    if(!req.session.isLoggedIn){
+        res.status(401).json({error: 'You must be logged in to do that'});
+    }
+    try {
+        const newPost = await Post.create({
+            title: req.body.title,
+            content: req.body.content,
+            userId: req.session.user.id,
+        });
+
+        res.json(newPost);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({error});
+    }
+});
 
 router.post('/todos', async (req, res) => {
     if(!req.session.isLoggedIn){
@@ -20,6 +40,8 @@ router.post('/todos', async (req, res) => {
     }
 });
 
+
+// -------------------------------SIGN UP/IN/OUT-----------------------------------------------
 // post signup data to database
 router.post('/signup', async (req, res) => {
     try {
