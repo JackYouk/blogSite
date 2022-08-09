@@ -4,7 +4,14 @@ const {User} = require('../models');
 const {Todo} = require('../models');
 
 router.get('/', (req, res) => {
-    res.render('homepage', {});
+    const posts = [{
+        title: 'testPost1',
+        username: 'jack',
+        content: 'cnwkubnweoubweoubewoubeouwbeoubeowubu',
+    }, {title: 'testPost2',username: 'zaza',content: '635738667823688962839696823692386778hey',}];
+    res.render('homepage', {
+        posts
+    });
 });
 
 
