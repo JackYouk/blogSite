@@ -3,6 +3,11 @@ const apiController = require('./apiController');
 const {User} = require('../models');
 const {Todo} = require('../models');
 
+router.get('/', (req, res) => {
+    res.render('homepage', {});
+});
+
+
 // renders signup/landing page
 router.get('/signup', (req,res) => {
     res.render('signup', {
