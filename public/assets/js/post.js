@@ -2,11 +2,11 @@ const titleInput = document.getElementById('titleInput');
 const contentInput = document.getElementById('contentInput');
 const createPostBtn = document.getElementById('createPostBtn');
 
-createPostBtn.addEventListener('click', async (event) => {
+createPostBtn?.addEventListener('click', async (event) => {
     event.preventDefault();
 
-    if(todoInput.value.trim().length === 0){
-        alert('todo cannot be empty');
+    if(titleInput.value.trim().length === 0 || contentInput.value.trim().length === 0){
+        alert('post cannot have empty fields');
         return;
     }
 
@@ -25,6 +25,6 @@ createPostBtn.addEventListener('click', async (event) => {
         await response.json();
         window.location.reload();
     } catch (error) {
-        alert(error);
+        alert({error});
     }
 });

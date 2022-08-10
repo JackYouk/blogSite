@@ -9,11 +9,10 @@ router.get('/', async (req, res) => {
         const postsData = await Post.findAll();
         const posts = postsData.map(post => post.get({plain: true}));
         console.log(posts);
-        const userData = await User.findByPk(posts.userId);
-        const username = userData.get({plain: true});
+
         res.render('homepage', {
             posts,
-            username
+            isLoggedIn: req.session.isLoggedIn
         });
     } catch (error) {
         console.log(error);
