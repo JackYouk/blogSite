@@ -4,8 +4,8 @@ const createPostBtn = document.getElementById('createPostBtn');
 
 createPostBtn?.addEventListener('click', async (event) => {
     event.preventDefault();
-    console.log(contentInput.value);
-    console.log(titleInput.value);
+
+
 
     if(titleInput.value.trim().length === 0 || contentInput.value.trim().length === 0){
         alert('post cannot have empty fields');

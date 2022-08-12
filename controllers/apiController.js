@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 // -------------------------------POSTS--------------------------------------------------------
 router.post('/posts', async (req, res) => {
     if(!req.session.isLoggedIn){
-        res.status(401).json({error: 'You must be logged in to do that'});
+        res.status(401).redirect('/');
     }
     try {
         const newPost = await Post.create({

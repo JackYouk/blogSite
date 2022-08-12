@@ -4,7 +4,7 @@
                 <div class="card m-2" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">{{post.title}}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{post.userId}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">{{post.user.username}}</h6>
                         <p class="card-text">{{post.content}}</p>
                     </div>
                 </div>
@@ -22,7 +22,11 @@
                         <textarea id="contentInput" class="form-control" placeholder="insert content here"></textarea>
                     </div>
                 </p>
-                <button class="btn btn-outline-success" type="button" id="createPostBtn">+</button>
+                {{#if isLoggedIn}}
+                    <button class="btn btn-outline-success" type="button" id="createPostBtn">+</button>
+                {{else}}
+                    <button class="btn btn-outline-success" type="button" id="createPostBtn" disabled>+</button>
+                {{/if}}
             </div>
         </div>
     </div>

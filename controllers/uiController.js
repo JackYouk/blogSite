@@ -6,7 +6,9 @@ const {Post} = require('../models');
 
 router.get('/', async (req, res) => {
     try {
-        const postsData = await Post.findAll();
+        const postsData = await Post.findAll({
+            include: [User],
+        });
         const posts = postsData.map(post => post.get({plain: true}));
         console.log(posts);
 
