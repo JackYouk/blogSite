@@ -4,6 +4,8 @@ const createPostBtn = document.getElementById('createPostBtn');
 
 createPostBtn?.addEventListener('click', async (event) => {
     event.preventDefault();
+    console.log(contentInput.value);
+    console.log(titleInput.value);
 
     if(titleInput.value.trim().length === 0 || contentInput.value.trim().length === 0){
         alert('post cannot have empty fields');
@@ -17,8 +19,8 @@ createPostBtn?.addEventListener('click', async (event) => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                titleInput: titleInput.value,
-                contentInput: contentInput.value,
+                title: titleInput.value,
+                content: contentInput.value,
             })
         });
 

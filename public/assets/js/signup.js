@@ -35,7 +35,7 @@ signUpBtn?.addEventListener('click', async (event) => {
 
         await response.json();
         // change user window to the /users endpoint
-        window.location.href = '/todos';
+        window.location.href = '/';
     } catch (error) {
         alert(error);
     }
