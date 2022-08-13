@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {Todo, User, Post} = require('../models');
+const {User, Post} = require('../models');
 const bcrypt = require('bcryptjs');
 
 
@@ -21,25 +21,6 @@ router.post('/posts', async (req, res) => {
         res.status(500).json({error});
     }
 });
-
-router.post('/todos', async (req, res) => {
-    if(!req.session.isLoggedIn){
-        res.status(401).json({error: 'You must be logged in to do that'});
-    }
-
-    try {
-        const newTodo = await Todo.create({
-            todo: req.body.todo,
-            userId: req.session.user.id,
-        });
-
-        res.json(newTodo);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({error});
-    }
-});
-
 
 // -------------------------------SIGN UP/IN/OUT-----------------------------------------------
 // post signup data to database
