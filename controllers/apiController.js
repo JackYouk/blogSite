@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 
 
 // -------------------------------POSTS--------------------------------------------------------
+// post route
 router.post('/posts', async (req, res) => {
     if(!req.session.isLoggedIn){
         res.status(401).redirect('/');
@@ -21,6 +22,9 @@ router.post('/posts', async (req, res) => {
         res.status(500).json({error});
     }
 });
+
+// delete route
+// put route
 
 // -------------------------------SIGN UP/IN/OUT-----------------------------------------------
 // post signup data to database
