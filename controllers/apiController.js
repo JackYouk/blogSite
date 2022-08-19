@@ -26,6 +26,10 @@ router.post('/posts', async (req, res) => {
 // delete route
 // put route
 
+router.post('/comment/:postId', async (req, res) => {
+
+});
+
 // -------------------------------SIGN UP/IN/OUT-----------------------------------------------
 // post signup data to database
 router.post('/signup', async (req, res) => {
