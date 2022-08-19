@@ -1,9 +1,7 @@
+// CREATE POST -------------------------------------------------------------------------------
 const titleInput = document.getElementById('titleInput');
 const contentInput = document.getElementById('contentInput');
 const createPostBtn = document.getElementById('createPostBtn');
-
-const editBtn = document.querySelector('.editBtn');
-const deleteBtn = document.querySelector('.deleteBtn');
 
 createPostBtn?.addEventListener('click', async (event) => {
     event.preventDefault();
@@ -32,9 +30,13 @@ createPostBtn?.addEventListener('click', async (event) => {
     }
 });
 
-editBtn?.addEventListener('click', async (event) => {
-    // fetch method PUT
-});
+// EDIT AND DELETE BUTTONS ------------------------------------------------------------------
+// const editBtn = document.querySelector('.editBtn');
+const deleteBtn = document.querySelector('.deleteBtn');
+
+// editBtn?.addEventListener('click', async (event) => {
+//     // fetch method PUT
+// });
 
 deleteBtn?.addEventListener('click', async (event) => {
     // fetch method DELETE
@@ -52,4 +54,9 @@ deleteBtn?.addEventListener('click', async (event) => {
         alert(error);
     }
 });
+
+// COMMENT -----------------------------------------------------------------------------------
+// show comments button
+
+// create comment
 
