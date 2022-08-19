@@ -9,10 +9,20 @@ router.get('/', async (req, res) => {
             include: [User],
         });
         const posts = postsData.map(post => post.get({plain: true}));
-        console.log(posts);
+
+        const postv2 = posts.map((post) => {
+            console.log(post);
+            if(post.userId === req.session?.user?.id){
+                post.myPost = true;
+            }else{
+                post.myPost = false;
+            }
+            return post;
+        });
+        
 
         res.render('homepage', {
-            posts,
+            posts: postv2,
             isLoggedIn: req.session.isLoggedIn
         });
     } catch (error) {
