@@ -2,8 +2,8 @@ const titleInput = document.getElementById('titleInput');
 const contentInput = document.getElementById('contentInput');
 const createPostBtn = document.getElementById('createPostBtn');
 
-const editBtn = document.getElementById('editBtn');
-const deleteBtn = document.getElementById('deleteBtn');
+const editBtn = document.querySelector('.editBtn');
+const deleteBtn = document.querySelector('.deleteBtn');
 
 createPostBtn?.addEventListener('click', async (event) => {
     event.preventDefault();
@@ -37,11 +37,9 @@ editBtn?.addEventListener('click', async (event) => {
 });
 
 deleteBtn?.addEventListener('click', async (event) => {
-    const postId = 0;
-
     // fetch method DELETE
     try {
-        const response = await fetch(`/api/posts/${postId}`, {
+        const response = await fetch(`/api/posts/${event.target.id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -51,7 +49,7 @@ deleteBtn?.addEventListener('click', async (event) => {
         await response.json();
         window.location.reload();
     } catch (error) {
-        alert({error});
+        alert(error);
     }
 });
 

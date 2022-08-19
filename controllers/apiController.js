@@ -25,13 +25,14 @@ router.post('/posts', async (req, res) => {
 
 // delete route
 router.delete('/posts/:postId', async (req,res) => {
-    const postId = req.params.postId;
+    const id = req.params.postId;
     try {
         await Post.destroy({
             where: {
-                postId,
+                id,
             }
         });
+        res.json('delete success');
     } catch(error) {
         console.error(error);
         res.status(500).json({error});
