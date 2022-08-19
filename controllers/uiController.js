@@ -2,11 +2,12 @@ const router = require('express').Router();
 const apiController = require('./apiController');
 const {User} = require('../models');
 const {Post} = require('../models');
+const {Comment} = require('../models');
 
 router.get('/', async (req, res) => {
     try {
         const postsData = await Post.findAll({
-            include: [User],
+            include: [User, Comment],
         });
         const posts = postsData.map(post => post.get({plain: true}));
 
@@ -17,6 +18,7 @@ router.get('/', async (req, res) => {
             }else{
                 post.myPost = false;
             }
+            console.log(post);
             return post;
         });
         
