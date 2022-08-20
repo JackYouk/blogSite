@@ -50,7 +50,7 @@ router.post('/comment/:postId', async (req, res) => {
         const newComment = await Comment.create({
             comment: req.body.comment,
             userId: req.session.user.id,
-            postId: req.body.postId,
+            postId: req.params.postId,
         });
 
         res.json(newComment);

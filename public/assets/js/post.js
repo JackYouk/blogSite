@@ -59,4 +59,37 @@ deleteBtn?.addEventListener('click', async (event) => {
 // show comments button
 
 // create comment
+const postCommentBtn = document.querySelector('.postCommentBtn');
+const postCommentInput = document.querySelector('#postCommentInput');
+console.log(postCommentBtn);
+console.log(postCommentInput);
+
+postCommentBtn.addEventListener('click', async (event) => {
+    console.log('bkwbckhwbkjw');
+    event.preventDefault();
+    console.log(postCommentInput.value);
+
+    if(postCommentInput.value.trim().length === 0){
+        alert('post cannot have empty fields');
+        return;
+    }
+
+    try {
+        const postId = document.querySelector('.postCommentBtn').id;
+        const response = await fetch(`/comment/${postId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                comment: postCommentInput.value,
+            })
+        });
+
+        await response.json();
+        window.location.reload();
+    } catch (error) {
+        alert({error});
+    }
+});
 
