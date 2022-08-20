@@ -7,7 +7,7 @@ const bcrypt = require('bcryptjs');
 // post route
 router.post('/posts', async (req, res) => {
     if(!req.session.isLoggedIn){
-        res.status(401).redirect('/');
+        res.status(401).redirect('/signin');
     }
     try {
         const newPost = await Post.create({
@@ -43,7 +43,21 @@ router.delete('/posts/:postId', async (req,res) => {
 
 // comment post route
 router.post('/comment/:postId', async (req, res) => {
+    if(!req.session.isLoggedIn){
+        res.status(401).redirect('/signin');
+    }
+    try {
+        const newComment = await Comment.create({
+            comment: req.body.comment,
+            userId: req.session.user.id,
+            postId: req.body.postId,
+        });
 
+        res.json(newComment);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({error});
+    }
 });
 // comment delete route
 
