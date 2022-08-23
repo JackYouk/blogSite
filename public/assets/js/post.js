@@ -60,7 +60,11 @@ deleteBtn?.addEventListener('click', async (event) => {
 
 // create comment
 const postCommentBtn = document.querySelector('.postCommentBtn');
-const postCommentInput = document.querySelector('#postCommentInput');
+
+// FIX THIS **************
+const postCommentInput = document.querySelector('.postCommentInput');
+// ***********************
+
 console.log(postCommentBtn);
 console.log(postCommentInput);
 
