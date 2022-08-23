@@ -57,6 +57,15 @@ deleteBtn?.addEventListener('click', async (event) => {
 
 // COMMENT -----------------------------------------------------------------------------------
 // show comments button
+const commentsBtn = document.querySelector('.commentsBtn');
+
+commentsBtn?.addEventListener('click', async (event) => {
+    const postId = event.target.id;
+    // document.getElementById("MyElement").classList.add('MyClass');
+    // document.getElementById("MyElement").classList.remove('MyClass');
+    
+});
+
 
 // create comment
 const postCommentBtn = document.querySelector('.postCommentBtn');
@@ -68,7 +77,7 @@ const postCommentInput = document.querySelector('.postCommentInput');
 console.log(postCommentBtn);
 console.log(postCommentInput);
 
-postCommentBtn.addEventListener('click', async (event) => {
+postCommentBtn?.addEventListener('click', async (event) => {
     console.log('bkwbckhwbkjw');
     event.preventDefault();
     console.log(postCommentInput.value);
@@ -79,7 +88,7 @@ postCommentBtn.addEventListener('click', async (event) => {
     }
 
     try {
-        const postId = document.querySelector('.postCommentBtn').id;
+        const postId = event.target.id;
         const response = await fetch(`/comment/${postId}`, {
             method: 'POST',
             headers: {
