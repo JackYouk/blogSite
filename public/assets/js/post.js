@@ -61,20 +61,16 @@ const commentBtns = document.querySelectorAll('.commentBtn');
 commentBtns.forEach(commentBtn => {
     commentBtn?.addEventListener('click', async (event) => {
         event.preventDefault();
-        console.log(event.target);
-        // ********************************
-        // const commentInput = FIGURE DIS OUT
-        // ********************************
+        const commentInput = event.target.previousElementSibling.value;
 
-        const response = await fetch(`/api/comment/${event.target.id}`, {
+        const response = await fetch(`/api/comment`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                // ********************************
-                // comment: commentInput.value,
-                // ********************************
+                comment: commentInput,
+                postId: event.target.id,
             })
         });
 

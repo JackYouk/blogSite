@@ -17,13 +17,6 @@ Comment.init(
                 notNull: true,
             },
         },
-        userId: {
-            type: DataTypes.UUID,
-            references: {
-                model: 'users',
-                key: 'id',
-            },
-        },
         postId: {
             type: DataTypes.UUID,
             references: {

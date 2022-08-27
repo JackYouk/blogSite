@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {User, Post} = require('../models');
+const {User, Post, Comment} = require('../models');
 const bcrypt = require('bcryptjs');
 
 
@@ -42,10 +42,11 @@ router.delete('/posts/:postId', async (req,res) => {
 // put route
 
 // comment post route
-router.post('/comment/:postId', async (req, res) => {
+router.post('/comment', async (req, res) => {
     try {
         const newComment = await Comment.create({
             comment: req.body.comment,
+            postId: req.body.postId,
         }); 
         // ********************************
         // WHERE req.params.postId
