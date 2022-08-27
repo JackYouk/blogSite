@@ -57,52 +57,65 @@ deleteBtn?.addEventListener('click', async (event) => {
 
 // COMMENT -----------------------------------------------------------------------------------
 // show comments button
-const commentsBtn = document.querySelector('.commentsBtn');
+// const commentsBtn = document.querySelector('.commentsBtn');
 
-commentsBtn?.addEventListener('click', async (event) => {
-    const postId = event.target.id;
-    // document.getElementById("MyElement").classList.add('MyClass');
-    // document.getElementById("MyElement").classList.remove('MyClass');
-    
-});
+// commentsBtn?.addEventListener('click', async (event) => {
+//     const postId = event.target.id;
+//     // document.getElementById("MyElement").classList.add('MyClass');
+//     // document.getElementById("MyElement").classList.remove('MyClass');
+
+// });
 
 
-// create comment
-const postCommentBtn = document.querySelector('.postCommentBtn');
-
-// FIX THIS **************
-const postCommentInput = document.querySelector('.postCommentInput');
-// ***********************
-
-console.log(postCommentBtn);
-console.log(postCommentInput);
-
-postCommentBtn?.addEventListener('click', async (event) => {
-    console.log('bkwbckhwbkjw');
+const commentForm = document.querySelector('.form')?.addEventListener('submit', async (event) => {
     event.preventDefault();
-    console.log(postCommentInput.value);
 
-    if(postCommentInput.value.trim().length === 0){
-        alert('post cannot have empty fields');
-        return;
-    }
+    const commentText = document.querySelector('input[name="commentText"]').value.trim();
 
     try {
         const postId = event.target.id;
-        const response = await fetch(`/comment/${postId}`, {
+        const response = await fetch(`/api/comment/${postId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                comment: postCommentInput.value,
+                comment: commentText,
             })
         });
 
         await response.json();
-        window.location.reload();
+        // window.location.reload();
     } catch (error) {
         alert({error});
     }
-});
+})
+
+// postCommentBtn?.addEventListener('click', async (event) => {
+//     event.preventDefault();
+//     console.log(postCommentInput.value);
+
+//     if(postCommentInput.value.trim().length === 0){
+//         alert('post cannot have empty fields');
+//         return;
+//     }
+
+//     try {
+//         const postId = event.target.id;
+//         const response = await fetch(`/api/comment/${postId}`, {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//             },
+//             body: JSON.stringify({
+//                 comment: postCommentInput.value,
+//             })
+//         });
+
+//         await response.json();
+//         window.location.reload();
+//     } catch (error) {
+//         alert({error});
+//     }
+// });
 

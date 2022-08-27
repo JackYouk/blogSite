@@ -24,7 +24,7 @@
                     {{!-- comments --}}
 
                     {{!-- comments btn --}}
-                    <div class="visible">
+                    <div class="invisible">
                         <div class="position-absolute bottom-0 end-0">
                             <button class="commentsBtn btn d-flex align-items-center m-1" id="{{post.id}}" type="button">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat" viewBox="0 0 16 16">
@@ -37,16 +37,16 @@
                     
 
                     {{!-- hidden comments container --}}
-                    <div class="invisible">
+                    <div class="visible">
                         {{!-- hidden comments content --}}
                         {{#each post.comments as |comment|}}
                             <p>{{comment}}</p>
                         {{/each}}
                         {{!-- hidden comments input --}}
-                        <div class="input-group mb-3">
-                            <input type="text" class="postCommentInput form-control" placeholder="insert comment here">
-                            <button class="postCommentBtn btn btn-outline-secondary" type="button" id="{{post.id}}">+</button>
-                        </div>
+                        <form class="input-group mb-3" id="{{post.id}}">
+                            <input name="commentText" type="text" class="postCommentInput form-control" placeholder="insert comment here">
+                            <button class="postCommentBtn btn btn-outline-secondary" type="submit">+</button>
+                        </form>
                     </div>
                     
                 </div>
