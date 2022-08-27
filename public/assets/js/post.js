@@ -56,66 +56,31 @@ deleteBtn?.addEventListener('click', async (event) => {
 });
 
 // COMMENT -----------------------------------------------------------------------------------
-// show comments button
-// const commentsBtn = document.querySelector('.commentsBtn');
+const commentBtns = document.querySelectorAll('.commentBtn');
 
-// commentsBtn?.addEventListener('click', async (event) => {
-//     const postId = event.target.id;
-//     // document.getElementById("MyElement").classList.add('MyClass');
-//     // document.getElementById("MyElement").classList.remove('MyClass');
+commentBtns.forEach(commentBtn => {
+    commentBtn?.addEventListener('click', async (event) => {
+        event.preventDefault();
+        console.log(event.target);
+        // ********************************
+        // const commentInput = FIGURE DIS OUT
+        // ********************************
 
-// });
-
-
-const commentForm = document.querySelector('.form')?.addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    const commentText = document.querySelector('input[name="commentText"]').value.trim();
-
-    try {
-        const postId = event.target.id;
-        const response = await fetch(`/api/comment/${postId}`, {
+        const response = await fetch(`/api/comment/${event.target.id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                comment: commentText,
+                // ********************************
+                // comment: commentInput.value,
+                // ********************************
             })
         });
 
         await response.json();
-        // window.location.reload();
-    } catch (error) {
-        alert({error});
-    }
-})
+        window.location.reload();
+    });
+});
 
-// postCommentBtn?.addEventListener('click', async (event) => {
-//     event.preventDefault();
-//     console.log(postCommentInput.value);
-
-//     if(postCommentInput.value.trim().length === 0){
-//         alert('post cannot have empty fields');
-//         return;
-//     }
-
-//     try {
-//         const postId = event.target.id;
-//         const response = await fetch(`/api/comment/${postId}`, {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//             },
-//             body: JSON.stringify({
-//                 comment: postCommentInput.value,
-//             })
-//         });
-
-//         await response.json();
-//         window.location.reload();
-//     } catch (error) {
-//         alert({error});
-//     }
-// });
 
