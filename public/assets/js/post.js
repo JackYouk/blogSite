@@ -63,19 +63,23 @@ commentBtns.forEach(commentBtn => {
         event.preventDefault();
         const commentInput = event.target.previousElementSibling.value;
 
-        const response = await fetch(`/api/comment`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                comment: commentInput,
-                postId: event.target.id,
-            })
-        });
-
-        await response.json();
-        window.location.reload();
+        try {
+            const response = await fetch(`/api/comment`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    comment: commentInput,
+                    postId: event.target.id,
+                })
+            });
+    
+            await response.json();
+            window.location.reload();
+        } catch (error) {
+            console.error(error);
+        }
     });
 });
 

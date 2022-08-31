@@ -48,9 +48,6 @@ router.post('/comment', async (req, res) => {
             comment: req.body.comment,
             postId: req.body.postId,
         }); 
-        // ********************************
-        // WHERE req.params.postId
-        // ********************************
         res.json(newComment);
     } catch (error) {
         console.error(error);
@@ -58,6 +55,20 @@ router.post('/comment', async (req, res) => {
     }
 });
 // comment delete route
+router.delete('/comment/:commentId', async (req, res) => {
+    const id = req.params.commentId;
+    try {
+        await Comment.destroy({
+            where: {
+                id,
+            }
+        });
+        res.json('comment deleted');
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({error});
+    }
+});
 
 // -------------------------------SIGN UP/IN/OUT-----------------------------------------------
 // post signup data to database
